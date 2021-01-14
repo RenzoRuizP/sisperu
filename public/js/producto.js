@@ -36,7 +36,7 @@ $(".btn-editar").on('click', function(){ // editar
 	
 	//console.log(data);
 	
-})
+});
 
 $("#modal_producto").on('hidden.bs.modal', function(event) {
 	$(this).find("#registrar_producto")[0].reset(); // limpiar los elementos del formulario
