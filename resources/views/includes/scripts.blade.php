@@ -50,3 +50,4 @@
     <script src="https://sisperu.net/sistema/aplication/view/TPL2020/publicroot/js/myjs.js?v=2.1"></script>
     <!-- demo app -->
     <!-- end demo js-->
+    <script type="text/javascript" src="{{asset('js/base.js')}}"></script>

@@ -22,6 +22,7 @@ Route::put('mantenimiento/{modelo}/{id}', 'PageController@update'); // editar
 Route::delete('mantenimiento/{modelo}/{id}', 'PageController@delete');// eliminar 
 Route::get('mantenimiento/{modelo}/{id}/edit', 'PageController@select'); // extraer datos para el formulario en json
 Route::get('mantenimiento/{modelo}', 'PageController@getPage'); //mostrar datos para listar
+Route::get('consulta/{modelo}/{funcion}', 'PageController@ejecutarFuncion'); // ruta para combo box
 
 Auth::routes();
 

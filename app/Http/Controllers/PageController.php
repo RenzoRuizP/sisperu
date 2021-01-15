@@ -69,6 +69,12 @@ class PageController extends Controller
     	return (new $controller)->destroy($obj);
     }
 
+    public function ejecutarFuncion($modelo, $funcion){
+        $clase = 'App\\'.ucfirst($modelo);
+
+        return response()->json($clase::$funcion());
+    }
+
 }
 
 

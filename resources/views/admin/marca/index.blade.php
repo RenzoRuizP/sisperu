@@ -52,8 +52,19 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                        Nombre: <input type="text" name="nombre">
-                                        imagen: <input type="text" name="imagen">
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                                Nombre: <input type="text" name="nombre" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                                imagen: <input type="file" name="imagen" id="img_input" class="form-control-file">
+                                                <div> 
+                                                    <img src="" id="img_preview">
+                                                </div>
+                                            </div>
+                                        </div>
                                       </div>
                                       <div class="modal-footer">
                                         <button type="button" id="guardar_marca" class="btn btn-primary">Save changes</button>
