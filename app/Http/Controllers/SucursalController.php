@@ -69,7 +69,7 @@ class SucursalController extends Controller
      */
     public function edit(Sucursal $sucursal)// devuelve 1 registro de una tabla desde la base de datos.
     {
-        $sucursal->distrito->provincia->departamento;
+        $sucursal->distrito->provincia->departamento; // devuelve distrito, provincia, departamento
         return response()->json($sucursal);
     }
 

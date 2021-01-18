@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Provincia extends Model
 {
     public function departamento(){
-    	return $this->belongsTo(Departamento::class);//de 1 a 1 (1 provincia) pertenece a 1 departamento
+    	return $this->belongsTo(Departamento::class);//Inverso de hasOne  de 1 a 1 (1 provincia) pertenece a 1 departamento
     }
 
     public function distritos(){

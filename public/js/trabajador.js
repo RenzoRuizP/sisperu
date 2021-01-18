@@ -21,10 +21,11 @@ $(".btn-editar").on('click', function(){ // editar
 		_modal.find("#registrar_trabajador").attr('action', _url_web_+'/mantenimiento/trabajador/'+_id);
 		_modal.find("#registrar_trabajador").append('<input type="hidden" name="_method" value="PUT">');
 
-		_modal.find('input[name="cargo_id"]').val(data.cargo_id);
-		_modal.find('input[name="empresa_id"]').val(data.empresa_id);
-		_modal.find('input[name="sucursal_id"]').val(data.sucursal_id);
+		_modal.find('select[name="cargo_id"]').val(data.cargo_id);
+		_modal.find('select[name="empresa_id"]').val(data.empresa_id);
+		_modal.find('select[name="sucursal_id"]').val(data.sucursal_id);
 		_modal.find('input[name="planilla"]').val(data.planilla);
+		_modal.find('input[name="sueldo"]').val(data.sueldo);
 		_modal.find('input[name="horas_trabajo"]').val(data.horas_trabajo);
 		_modal.find('input[name="tiempo_refrigerio"]').val(data.tiempo_refrigerio);
 		_modal.find('input[name="persona_id"]').val(data.persona_id);

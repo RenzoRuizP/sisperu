@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Empresa;
+use App\Sucursal;
+use App\Cargo;
 use App\Trabajador;
 use Illuminate\Http\Request;
 
@@ -14,9 +17,12 @@ class TrabajadorController extends Controller
      */
     public function index()
     {
+        $empresas = Empresa::whereNull('deleted_at')->get();
+        $cargos = Cargo::whereNull('deleted_at')->get();
+        $sucursales = Sucursal::whereNull('deleted_at')->get();
         $js=['trabajador.js'];
         $trabajadores = Trabajador::whereNull('deleted_at')->get();
-        return view("admin.trabajador.index", compact('js', 'trabajadores'));
+        return view("admin.trabajador.index", compact('js', 'trabajadores', 'cargos', 'sucursales', 'empresas'));
     }
 
     /**
@@ -84,7 +90,8 @@ class TrabajadorController extends Controller
      */
     public function update(Request $request, Trabajador $trabajador)//actualizo un registro de la base de datos
     {
-        $trabajador = new Trabajador();
+        //dd($trabajador);
+        //$trabajador = Trabajador::findOrFail($id);
         $trabajador->cargo_id =  $request->cargo_id;
         $trabajador->empresa_id = $request->empresa_id;
         $trabajador->sucursal_id = $request->sucursal_id;

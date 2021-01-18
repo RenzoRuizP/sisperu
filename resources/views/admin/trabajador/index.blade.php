@@ -21,7 +21,6 @@
                         <th>PLANILLA</th>
                         <th>HORAS TRABAJADAS</th>
                         <th>SUELDO</th>
-                        
                         <th>TIEMPO DE REFRIGERIO</th>
                         <th>PERSONA</th>
                         <th>ACCIONES</th>
@@ -47,6 +46,7 @@
                                 data-sucursal_id ="{{$trabajador->sucursal_id}}"
                                 data-planilla ="{{$trabajador->planilla}}"
                                 data-horas_trabajo ="{{$trabajador->horas_trabajo}}"
+                                data-sueldo ="{{$trabajador->sueldo}}"
                                 data-tiempo_refrigerio ="{{$trabajador->tiempo_refrigerio}}"
                                 data-persona_id ="{{$trabajador->persona_id}}"
                                 >Editar</button>
@@ -76,14 +76,48 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Cargo ID: <input type="text" name="cargo_id" class="form-control">
-                    Empresa ID: <input type="text" name="empresa_id" class="form-control">
-                    Sucursal ID: <input type="text" name="sucursal_id" class="form-control">
-                    planilla: <input type="text" name="planilla" class="form-control">
-                    Sueldo: <input type="text" name="sueldo" class="form-control">
-                    Horas de trabajo: <input type="text" name="horas_trabajo" class="form-control">
-                    Tiempo refrigerio: <input type="text" name="tiempo_refrigerio" class="form-control">
-                    Persona ID: <input type="text" name="persona_id" class="form-control">
+
+                    <div class="form-group">
+                    Cargo   <select class="form-control" name="cargo_id" id="cargo_id">
+                                <option>Elige</option>                        
+                                @foreach($cargos as $cargo)
+                                    <option value="{{$cargo->id}}">{{$cargo->nombre}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        Empresa ID
+                            <select name="empresa_id" class="form-control">
+                                <option>Elige</option>
+                                @foreach($empresas  as $empresa)
+                                <option value="{{$empresa->id}}">{{$empresa->nombre}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        Sucursal <select id="sucursal_id" name= "sucursal_id" class="form-control">
+                                <option>Elige</option>
+                                @foreach($sucursales as $sucursal);
+                                    <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        planilla: <input type="text" name="planilla" maxlength="1" class="form-control" onkeypress="ValidaSoloNumeros();">
+                    </div>
+                    <div class="form-group">
+                        Sueldo: <input type="text" name="sueldo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Horas de trabajo: <input type="text" name="horas_trabajo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Tiempo refrigerio: <input type="text" name="tiempo_refrigerio" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Persona ID: <input type="text" name="persona_id" class="form-control">
+                    </div>
+                    <div class="form-group">
                   </div>
                   <div class="modal-footer">
                     <button type="button" id="guardar_trabajador" class="btn btn-primary">Save changes</button>

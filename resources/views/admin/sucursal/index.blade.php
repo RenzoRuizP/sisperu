@@ -15,7 +15,7 @@
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th>DISTRITO ID</th>
+                        <th>DISTRITO</th>
                         <th>DIRECCIÓN</th>
                         <th>TELÉFONO</th>
                         <th>ACCIONES</th>

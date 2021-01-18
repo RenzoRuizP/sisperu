@@ -17,6 +17,7 @@ class CreateDistritoTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->integer('provincia_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

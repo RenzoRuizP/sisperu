@@ -1,3 +1,4 @@
+
 function cargarComboProvincia(_id) {
       let _type = $(document).find("select#provincia_id");
       $(document).find("select#distrito_id").html('');
@@ -89,6 +90,13 @@ function cargarComboProvincia(_id) {
         }
     });
   }
+
+
+  function ValidaSoloNumeros() {/* no permite el ingreso de carÃ¡cteres que no sean numeros*/
+    if ((event.keyCode < 48) || (event.keyCode/* cÃ³digo de la tecla fÃ­sica*/ > 57)) /* del 48 al 56 corresponde solo numeros*/
+    event.returnValue = false;
+  }
+
 
   function preview_img(input){
     let destino = input.closest('.form-group').find("img");
