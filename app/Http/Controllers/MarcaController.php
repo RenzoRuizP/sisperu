@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Marca;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class MarcaController extends Controller
 {
@@ -37,10 +39,19 @@ class MarcaController extends Controller
      */
     public function store(Request $request)
     {
-        $marca = new Marca();
-        $marca->nombre=$request->nombre;
-        $marca->imagen=$request->imagen;
-        $marca->save();
+        $ext=substr($request->file('imagen_file')->getMimeType(), strpos($request->file('imagen_file')->getMimeType(),'/')+1);
+
+        $file = $request->file('imagen_file')->storeAs('public/img/marcas', $request->nombre.Str::random(2).'.'.$ext);
+        if($file){
+            $marca = new Marca();
+            $marca->nombre=$request->nombre;
+            $marca->imagen = str_replace('public/', '', $file);
+            $marca->save();
+        }
+
+
+
+        
 
         return redirect("mantenimiento/marca");
     }
@@ -76,8 +87,19 @@ class MarcaController extends Controller
      */
     public function update(Request $request, Marca $marca) // el request devuelve un json // $Marca devuelve un objeto
     {
+        if($request->file('imagen_file')){
+            Storage::delete('public/'.$marca->imagen);
+
+            $ext=substr($request->file('imagen_file')->getMimeType(), strpos($request->file('imagen_file')->getMimeType(),'/')+1);
+
+            $file = $request->file('imagen_file')->storeAs('public/img/marcas', $request->nombre.Str::random(2).'.'.$ext);
+        }else{
+            $file = $marca->imagen;
+        }
+
+
         $marca->nombre = $request->nombre;
-        $marca->imagen = $request->imagen;
+        $marca->imagen = str_replace('public/', '', $file);
         $marca->save();
 
         return redirect("mantenimiento/marca");

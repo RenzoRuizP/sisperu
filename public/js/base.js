@@ -99,7 +99,7 @@ function cargarComboProvincia(_id) {
 
 
   function preview_img(input){
-    let destino = input.closest('.form-group').find("img");
+    let destino = $(input).closest('.form-group').find("img");
     console.log(destino)
     if(input.files && input.files[0]){
       var reader = new FileReader();
@@ -130,7 +130,7 @@ function cargarComboProvincia(_id) {
     $(document).on('change', 'input#img_input', function(){
 
       //console.log(this);
-      preview_img($(this));
+      preview_img(this);
       
 
     });

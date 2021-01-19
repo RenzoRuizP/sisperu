@@ -16,4 +16,5 @@ class Persona extends Model
 	public function nombre_completo(){
 		return $this->nombres.' '.$this->apellidos;
 	}
+
 }

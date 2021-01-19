@@ -32,6 +32,7 @@
     <script type="text/javascript">
         var _tpl_ = "{{env('APP_URL')}}";
         var _url_web_ = "{{env('APP_URL')}}";
+        var _storage_ = "{{asset('storage').'/'}}";
     </script>
     @include('includes.scripts')
     @foreach($js as $archivo) 

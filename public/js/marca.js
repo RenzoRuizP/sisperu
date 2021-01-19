@@ -36,7 +36,7 @@ $(".btn-editar").on('click', function(){ // editar
 		_modal.find("#registrar_marca").append('<input type="hidden" name="_method" value="PUT">');
 
 		_modal.find('input[name="nombre"]').val(data.nombre);
-		_modal.find('input[name="imagen"]').val(data.imagen);
+		_modal.find('img#img_preview').attr('src', _storage_+data.imagen);
 		_modal.modal('show');
 	});
 	
@@ -48,6 +48,6 @@ $("#modal_marca").on('hidden.bs.modal', function(event) {
 	$(this).find("#registrar_marca")[0].reset(); // limpiar los elementos del formulario
 	$(this).find("#registrar_marca").attr('action',_url_web_+'/mantenimiento/marca'); // para limpiar la ruta del action del formulario
 	$(this).find("#registrar_marca").find('input[name="_token"]').val($("#marca_eliminar").find('input[name="_token"]').val()); // recuperar token del formulario laravel
-
+	$(this).find('img#img_preview').attr('src', '');
 	$(this).find("#registrar_marca").find('input[name="_method"]').remove(); // para eliminar el input method del formulario
 });

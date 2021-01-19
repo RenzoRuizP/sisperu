@@ -15,9 +15,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>CARGO ID</th>
-                        <th>EMPRESA ID</th>
-                        <th>SUCURSAL ID</th>
+                        <th>CARGO</th>
+                        <th>EMPRESA</th>
+                        <th>SUCURSAL</th>
                         <th>PLANILLA</th>
                         <th>HORAS TRABAJADAS</th>
                         <th>SUELDO</th>
@@ -30,14 +30,16 @@
                     @foreach($trabajadores as $trabajador)
                         <tr>
                             <td>{{$trabajador->id}}</td>
-                            <td>{{$trabajador->cargo_id}}</td>
-                            <td>{{$trabajador->empresa_id}}</td>
-                            <td>{{$trabajador->sucursal_id}}</td>
+                            <td>{{$trabajador->cargo->nombre}}</td>
+                            <td>{{$trabajador->empresa->nombre}}</td>
+                            <td>{{$trabajador->sucursal->nombre}}</td>
                             <td>{{$trabajador->planilla}}</td>
                             <td>{{$trabajador->horas_trabajo}}</td>
                             <td>{{$trabajador->sueldo}}</td>
                             <td>{{$trabajador->tiempo_refrigerio}}</td>
-                            <td>{{$trabajador->persona_id}}</td>
+                            <td>
+                                {{$trabajador->persona->nombres.' '.$trabajador->persona->apellidos}}
+                            </td>
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$trabajador->id}}" 

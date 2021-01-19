@@ -29,6 +29,7 @@
                 </thead>
                 <tbody>
                     @foreach($personas as $persona)
+
                         <tr>
                             <td>{{$persona->id}}</td>
                             <td>{{$persona->nombres}}</td>
@@ -37,9 +38,25 @@
                             <td>{{$persona->telefono}}</td>
                             <td>{{$persona->email}}</td>
                             <td>{{$persona->direccion}}</td>
-                            <td>{{$persona->tipo_documento}}</td>
+
+                            @php 
+                                if($persona->tipo_documento == 0)
+                                echo '<td>RUC</td>';
+                                if($persona->tipo_documento == 1)
+                                 echo '<td>DNI</td>';
+                                if($persona->tipo_documento == 2)
+                                 echo '<td>CARNET DE EXTRANJERIA</td>';
+                            @endphp
+
                             <td>{{$persona->numero_documento}}</td>
-                            <td>{{$persona->sexo}}</td>
+
+                            @php
+                                if($persona->sexo == 0)
+                                    echo '<td>Hombre</td>';
+                                else
+                                    echo '<td>Mujer</td>';
+                            @endphp
+                            
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$persona->id}}" 

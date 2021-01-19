@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Empresa;
 use App\Sucursal;
 use App\Cargo;
 use App\User;
 use App\Persona;
+
 class Trabajador extends Model
 {
     protected $table="trabajadores";
@@ -21,11 +23,15 @@ class Trabajador extends Model
     }
 
     public function cargo(){
-    	return $this->hasOne(Cargo::class);// 1 trabajador tiene 1 cargo
+    	return $this->belongsTo(Cargo::class);// 1 trabajador tiene 1 cargo
     }
 
     public function sucursal(){
-    	return $this->hasOne(Sucursal::class); // 1 trabajador pertenece a 1 sucursal
+    	return $this->belongsTo(Sucursal::class); // 1 trabajador pertenece a 1 sucursal
+    }
+
+    public function empresa(){
+        return $this->belongsTo(Empresa::class);
     }
 
 

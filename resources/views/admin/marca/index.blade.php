@@ -24,7 +24,7 @@
                                             <tr>
                                                 <td>{{$marca->id}}</td>
                                                 <td>{{$marca->nombre}}</td>
-                                                <td>{{$marca->imagen}}</td>
+                                                <td><img src="{{asset('storage/'.$marca->imagen)}}" height="60"></td>
                                                 <td>
                                                     <button class="btn btn-success btn-editar" data-nombre="{{$marca->nombre}}" data-id="{{$marca->id}}" data-imagen="{{$marca->imagen}}">Editar</button>
                                                     <button data-id="{{$marca->id}}" class="btn btn-danger btn-eliminar">Eliminar</button>
@@ -42,7 +42,7 @@
                             <div class="modal" tabindex="-1" role="dialog" id="modal_marca">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <form id="registrar_marca" action="{{url('mantenimiento/marca')}}" method="post">
+                                    <form id="registrar_marca" action="{{url('mantenimiento/marca')}}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         
                                       <div class="modal-header">
@@ -59,9 +59,9 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-10">
-                                                imagen: <input type="file" name="imagen" id="img_input" class="form-control-file">
+                                                imagen: <input type="file" name="imagen_file" id="img_input" class="form-control-file">
                                                 <div> 
-                                                    <img src="" id="img_preview">
+                                                    <img src="" id="img_preview" class="w-100">
                                                 </div>
                                             </div>
                                         </div>

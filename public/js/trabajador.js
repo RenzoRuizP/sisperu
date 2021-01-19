@@ -17,7 +17,7 @@ $(".btn-editar").on('click', function(){ // editar
 	.done(function(data) {
 		
 		let _modal = $("#modal_trabajador");
-
+		
 		_modal.find("#registrar_trabajador").attr('action', _url_web_+'/mantenimiento/trabajador/'+_id);
 		_modal.find("#registrar_trabajador").append('<input type="hidden" name="_method" value="PUT">');
 

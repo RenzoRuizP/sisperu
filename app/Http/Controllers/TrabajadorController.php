@@ -17,12 +17,15 @@ class TrabajadorController extends Controller
      */
     public function index()
     {
+        $trabajador = Trabajador::find(1);
+        //dd($trabajador->persona->nombres.' '.$trabajador->persona->apellidos);
+
         $empresas = Empresa::whereNull('deleted_at')->get();
         $cargos = Cargo::whereNull('deleted_at')->get();
         $sucursales = Sucursal::whereNull('deleted_at')->get();
         $js=['trabajador.js'];
         $trabajadores = Trabajador::whereNull('deleted_at')->get();
-        return view("admin.trabajador.index", compact('js', 'trabajadores', 'cargos', 'sucursales', 'empresas'));
+        return view("admin.trabajador.index", compact('js', 'trabajadores', 'cargos', 'sucursales', 'empresas', 'trabajador'));
     }
 
     /**
