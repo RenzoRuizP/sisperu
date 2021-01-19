@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Persona;
 use App\Empresa;
 use App\Sucursal;
 use App\Cargo;
@@ -19,13 +20,14 @@ class TrabajadorController extends Controller
     {
         $trabajador = Trabajador::find(1);
         //dd($trabajador->persona->nombres.' '.$trabajador->persona->apellidos);
-
+        $personas = Persona::whereNull('deleted_at')->get();
         $empresas = Empresa::whereNull('deleted_at')->get();
         $cargos = Cargo::whereNull('deleted_at')->get();
         $sucursales = Sucursal::whereNull('deleted_at')->get();
         $js=['trabajador.js'];
         $trabajadores = Trabajador::whereNull('deleted_at')->get();
-        return view("admin.trabajador.index", compact('js', 'trabajadores', 'cargos', 'sucursales', 'empresas', 'trabajador'));
+        
+        return view("admin.trabajador.index", compact('js', 'trabajadores', 'cargos', 'sucursales', 'empresas', 'trabajador', 'personas'));
     }
 
     /**

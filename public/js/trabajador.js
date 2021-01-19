@@ -45,7 +45,7 @@ $(".btn-eliminar").on('click', function() {
 	})
 });
 
-$("#modal_proveedor").on('hidden.bs.modal', function(event) {
+$("#modal_trabajador").on('hidden.bs.modal', function(event) {
 	$(this).find("#registrar_trabajador")[0].reset(); // limpiar los elementos del formulario
 	$(this).find("#registrar_trabajador").attr('action',_url_web_+'/mantenimiento/trabajador'); // para limpiar la ruta del action del formulario
 	$(this).find("#registrar_trabajador").find('input[name="_token"]').val($("#trabajador_eliminar").find('input[name="_token"]').val()); // recuperar token del formulario laravel

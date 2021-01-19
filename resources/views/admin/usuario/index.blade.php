@@ -27,7 +27,9 @@
                             <td>{{$usuario->id}}</td>
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->password}}</td>
-                            <td>{{$usuario->trabajador_id}}</td>
+                            <td>
+                                {{$user_->trabajador->persona->nombres.' '.$user_->trabajador->persona->apellidos}}
+                            </td>
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$usuario->id}}" 
@@ -61,7 +63,36 @@
                     </button>
                   </div>
                   <div class="modal-body">
+                        <div class="form-group">
+                        Tipo Documento 
+                            <select name="tipo_documento" class="form-control">
+                                <option>Elige</option>
+                                <option value="0">RUC</option>
+                                <option value="1">DNI</option>
+                                <option value="2">CARNET DE EXTRANJERIA</option>
+                            </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        número de documento <input type="text" id="numero_documento" name="numero_documento" class="form-control" maxlength="11" onkeypress="ValidaSoloNumeros();">
+                    </div>
+                    <div class="form-group">
+                        Nombres: <input type="text" name="nombres" class="form-control" disabled="true">
+                    </div>
+                    <div class="form-group">
+                        Apellidos: <input type="text" name="apellidos" class="form-control" disabled="true">
+                    </div>
+                    <div class="form-group">
+                        Nombre usuario: <input type="text" name="nombre_usuario" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Password: <input type="text" name="repetir_clave" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Repetir password: <input type="text" name="repetir_clave" class="form-control">
+                    </div>
 
+                    <!--
                     <div class="form-group">
                     </div>
                     <div class="form-group">
@@ -71,14 +102,14 @@
                         Password: <input type="text" name="clave" class="form-control">
                     </div>
                     <div class="form-group">
-                    Persona   <select class="form-control" name="trabajador_id">
+                    Trabajador   <select class="form-control" name="trabajador_id">
                                 <option>Elige</option>                        
                                 @foreach($trabajadores as $trabajador)
-                                    <option value="{{$trabajador->id}}">{{$trabajador->id}}</option>
+                                    <option value="{{$trabajador->id}}">{{$trabajador->persona->nombres}}</option>
                                 @endforeach
                             </select>
                     </div>
-                  
+                    -->
                   </div>
                   <div class="modal-footer">
                     <button type="button" id="guardar_usuario" class="btn btn-primary">Save changes</button>

@@ -12,10 +12,14 @@ class UserController extends Controller
    
     public function index()
     {
+        $user_ = User::find(1);
+        //dd($user_->trabajador->persona->nombres.' '.$user_->trabajador->persona->apellidos);
+
         $trabajadores = Trabajador::whereNull('deleted_at')->get();
         $js = ['usuario.js'];
         $usuarios = User::whereNull('deleted_at')->get();
-        return view("admin.usuario.index", compact('js','usuarios', 'trabajadores'));
+        
+        return view("admin.usuario.index", compact('js','usuarios', 'trabajadores','user_'));
     }
 
     public function create()

@@ -32,11 +32,13 @@
                             <td>{{$producto->id}}</td>
                             <td>{{$producto->codigo}}</td>
                             <td>{{$producto->nombre}}</td>
-                            <td>{{$producto->caracteristica}}</td>
-                            <td>{{$producto->categoria_id}}</td>
-                            <td>{{$producto->marca_id}}</td>
-                            <td>{{$producto->proveedor_id}}</td>
-                            <td>{{$producto->foto}}</td>
+                            <td>{{$producto->caracteristicas}}</td>
+                            <td>{{$producto_->categoria->nombre}}</td>
+                            <td>{{$producto->marca->nombre}}</td>
+                            <td>{{$producto_->proveedor->nombre}}</td>
+                            <td>
+                                    <img src="{{asset('storage/'.$producto->foto)}}" height="60">
+                            </td>
                             <td>{{$producto->unidad_por_base}}</td>
                             <td>{{$producto->costo_proveedor}}</td>
                             <td>
@@ -44,7 +46,7 @@
                                 data-id ="{{$producto->id}}" 
                                 data-codigo ="{{$producto->codigo}}" 
                                 data-nombre ="{{$producto->nombre}}" 
-                                data-caracteristica ="{{$producto->caracteristica}}"
+                                data-caracteristica ="{{$producto->caracteristicas}}"
                                 data-categoria_id ="{{$producto->categoria_id}}"
                                 data-marca_id ="{{$producto->marca_id}}"
                                 data-proveedor_id ="{{$producto->proveedor_id}}"
@@ -68,7 +70,7 @@
         <div class="modal" tabindex="-1" role="dialog" id="modal_producto">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="registrar_producto" action="{{url('mantenimiento/producto')}}" method="post">
+                <form id="registrar_producto" action="{{url('mantenimiento/producto')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     
                   <div class="modal-header">
@@ -78,18 +80,75 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    Código: <input type="text" name="codigo" class="form-control">
-                    Nombre: <input type="text" name="nombre" class="form-control">
-                    Característica: <input type="text" name="caracteristicas" class="form-control">
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            Código: <input type="text" name="codigo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            Nombre: <input type="text" name="nombre" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            Característica: <input type="text" name="caracteristicas" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
 
-                    Categoria_id: <input type="text" name="categoria_id" class="form-control">
-                    marca_id: <input type="text" name="marca_id" class="form-control">
+                            Categoria
+                                <select name="categoria_id" class="form-control">
+                                    <option>Elige</option>
+                                    @foreach($categorias as $categoria)
+                                        <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
 
-                    proveedor_id: <input type="text" name="proveedor_id" class="form-control">
-                    foto: <input type="text" name="foto" class="form-control">
-                    unidad x base: <input type="text" name="unidad_por_base" class="form-control">
-                    costo pronveedor: <input type="text" name="costo_proveedor" class="form-control">
+                            Marca   <select name="marca_id" class="form-control">
+                                        <option>Elige</option>
+                                        @foreach($marcas as $marca)
+                                            <option value="{{$marca->id}}">{{$marca->nombre}}</option>
+                                        @endforeach
 
+                                    </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            Proveedor<select name="proveedor_id" class="form-control">
+                                        <option>Elige</option>
+                                    @foreach($proveedores as $proveedor)
+                                        <option value="{{$proveedor->id}}">{{$proveedor->nombre}}</option>
+                                    @endforeach
+                                </select>
+                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            foto: <input type="file" name="imagen_foto" id="imagen_foto" class="form-control-file">
+                            <div>
+                                <img src="" id="img_preview_foto" class="w-100">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            unidad x base: <input type="text" name="unidad_por_base" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                            costo pronveedor: <input type="text" name="costo_proveedor" class=" form-control">
+                        </div>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" id="guardar_producto" class="btn btn-primary">Save changes</button>

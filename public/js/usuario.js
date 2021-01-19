@@ -16,7 +16,7 @@ $("#modal_usuario").on('hidden.bs.modal', function(event) {
 $(".btn-editar").on('click', function(){ // editar
 	let _id = $(this).data('id');
 	//let _nombre = $(this).data('name');
-	let _p = $(this).data('password')
+	//let _p = $(this).data('password')
 	$.ajax({
 		url: _url_web_+'/mantenimiento/user/'+_id+'/edit',
 		type: 'get',
@@ -38,6 +38,10 @@ $(".btn-editar").on('click', function(){ // editar
 
 	
 })
+
+function buscar_doc(){
+	let doc = document.getElementById("numero_documento").value;
+}
 /*
 $(".btn-eliminar").on('click', function() {
 	let _id = $(this).data('id');

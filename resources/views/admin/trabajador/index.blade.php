@@ -117,7 +117,15 @@
                         Tiempo refrigerio: <input type="text" name="tiempo_refrigerio" class="form-control">
                     </div>
                     <div class="form-group">
-                        Persona ID: <input type="text" name="persona_id" class="form-control">
+                        Persona
+                            <select class="form-control" name="persona_id">
+                                <option>Elige</option>
+                                @foreach($personas as $persona)
+
+                                    <option value="{{$persona->persona_id}}">{{$persona->nombres}}</option>
+                                @endforeach
+                            </select>
+                         
                     </div>
                     <div class="form-group">
                   </div>
