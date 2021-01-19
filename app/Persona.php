@@ -17,4 +17,13 @@ class Persona extends Model
 		return $this->nombres.' '.$this->apellidos;
 	}
 
+	static function getTipoDocumento(){
+		$salida = [
+			1 => 'DNI',
+			2 => 'PASAPORTE',
+			3 => 'CARNET DE EXTRANGERIA(CE)',
+			4 => 'OTROS'
+		];
+		return $salida;
+	}
 }
