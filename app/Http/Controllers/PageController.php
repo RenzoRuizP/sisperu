@@ -44,6 +44,7 @@ class PageController extends Controller
     	if(!class_exists($controller)){ return response()->view('errors.404',array('msg'=>'Esta página no existe'),404);}
     	if(class_exists($controller) && ! method_exists((new $controller), 'edit')){return response()->view('errors.404',array('msg'=>'Esta funcion no esta disponible'),404);}
     	$obj = $clase::find($request->id);
+        //dd($request->id);
     	return (new $controller)->edit($obj);
     }
 

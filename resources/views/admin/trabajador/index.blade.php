@@ -127,7 +127,7 @@
                             </select>
                          
                     </div>
-                    <div class="form-group">
+                   
                   </div>
                   <div class="modal-footer">
                     <button type="button" id="guardar_trabajador" class="btn btn-primary">Save changes</button>

@@ -16,6 +16,8 @@
                     <tr>
                         <th>ID</th>
                         <th>TIPO CLIENTE</th>
+                        <th>DOCUMENTO</th>
+                        <th>NOMBRES</th>
                         <th>ACCIONES</th>
                     </tr>
                 </thead>
@@ -24,6 +26,8 @@
                         <tr>
                             <td>{{$cliente->id}}</td>
                             <td>{{$cliente->tipo_cliente}}</td>
+                            <td>{{$cliente->numero_documento}}</td>
+                            <td>{{$cliente->nombres}}</td>
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$cliente->id}}" 
@@ -76,24 +80,26 @@
                         
                         <div class="tab-pane show active" id="profile1">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <select name="p_departamento" class="form-control">
+                                <div class="form-group col-md-12">
+                                    <select name="tipo_documento" class="form-control">
                                         <option>Tipo documento</option>
                                         @foreach($tipoDocumento as $key => $tipo)
                                             <option value="{{$key}}">{{$tipo}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" name="doc_id" class="form-control" placeholder="DNI*">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <input type="text" name="doc_id" id="doc_id" class="form-control" placeholder="N° documento*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="apellidos" class="form-control" placeholder="Apellidos*">
+                                    <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Apellidos*">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="nombres" class="form-control" placeholder="Nombres*">
+                                    <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombres*">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -105,10 +111,14 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <input type="email" name="email" class="form-control" placeholder="Email*">
                                 </div>
-                                <div class="form-group col-md-6">
+                               
+                            </div>
+                             <div class="form-row">
+                                
+                                <div class="form-group col-md-12">
                                     <input type="text" name="direccion" class="form-control" placeholder="Dirección*">
                                 </div>
                             </div>
@@ -159,7 +169,39 @@
                             <div class="form-row">
                                 
                                 <div class="form-group col-md-12">
-                                    <input type="text" name="razon_social" class="form-control" placeholder="Dirección*">
+                                    <input type="text" name="direccion" class="form-control" placeholder="Dirección*">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                
+                                <div class="form-group col-md-12">
+                                    <input type="email" name="email" class="form-control" placeholder="Email*">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <select name="p_departamento" id="departamento_id" class="form-control">
+                                        <option>Elige</option>
+                                        @foreach($departamentos as $departamento)
+                                            <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <select name="p_provincia" id="provincia_id" class="form-control">
+                                        <option>Elige</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <select name="p_distrio" id="distrito_id" class="form-control">
+                                        <option>Elige</option>
+                                        
+                                    </select>
                                 </div>
                             </div>
                         </div>

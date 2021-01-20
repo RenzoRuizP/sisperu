@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Trabajador;
 use App\Distrito;
+use App\Institucion;
 class Empresa extends Model
 {
 	public function distrito(){
@@ -14,5 +15,9 @@ class Empresa extends Model
 
 	public function trabajador(){
 		return $this->hasMany(Trabajador::class);
+	}
+
+	public function institucion(){
+		return $this->hasMany(Institucion::class);
 	}
 }

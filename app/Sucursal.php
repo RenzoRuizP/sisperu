@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Trabajador;
 use App\Distrito;
 use Illuminate\Database\Eloquent\Model;
 

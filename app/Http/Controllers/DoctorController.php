@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Departamento;
-use App\Persona;
-use App\Cliente;
+use App\Doctor;
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +14,11 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $tipoDocumento = Persona::getTipoDocumento();
-        $departamentos = Departamento::all();
-        $js = ['cliente.js'];
-        $clientes = Cliente::whereNull('deleted_at')->get();
+        $js = ['doctor.js'];
+        $doctores = Doctor::whereNull('deleted_at')->get();
+        //dd($doctores);
+        return view("admin.doctor.index", compact('js','doctores'));
 
-        return view("admin.cliente.index", compact('js', 'clientes', 'tipoDocumento', 'departamentos'));
     }
 
     /**
@@ -42,23 +39,21 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $cliente = new Cliente();
-        $cliente->tipo_cliente = $request->tipo_cliente;
-        $cliente->numero_documento = $request->numero_documento;
-        $cliente->nombres = $request->nombres;
+        $doctor = new Doctor();
+        $doctor->especialidad = $request->especialidad;
+        $doctor->cmp = $request->cmp;
+        $doctor->save();
 
-        $cliente->save();
-
-        return redirect("mantenimiento/cliente");
+        return redirect("mantenimiento/doctor");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Cliente  $cliente
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function show(Cliente $cliente)
+    public function show(Doctor $doctor)
     {
         //
     }
@@ -66,34 +61,41 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cliente  $cliente
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function edit($documento)
+    public function edit(Doctor $doctor)
     {
-        return response()->json($cliente);
+        return response()->json($doctor);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Cliente  $cliente
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, Doctor $doctor)
     {
-        //
+        $doctor->especialidad = $request->especialidad;
+        $doctor->cmp = $request->cmp;
+        $doctor->save();
+
+        return redirect("mantenimiento/doctor");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Cliente  $cliente
+     * @param  \App\Doctor  $doctor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->deleted_at = date('Y-m-d H:i:s');
+        $doctor->save();
+
+        return redirect("mantenimiento/doctor");
     }
 }

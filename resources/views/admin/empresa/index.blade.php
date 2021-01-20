@@ -31,7 +31,7 @@
                             <td>{{$empresa->id}}</td>
                             <td>{{$empresa->nombre}}</td>
                             <td>{{$empresa->razon_social}}</td>
-                            <td>{{$empresa->distrito_id}}</td>
+                            <td>{{$empresa->distrito->nombre}}</td>
                             <td>{{$empresa->direccion}}</td>
                             <td>{{$empresa->ruc}}</td>
                             <td>{{$empresa->telefono}}</td>

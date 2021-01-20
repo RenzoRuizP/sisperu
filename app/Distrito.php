@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+
+use App\Institucion;
 use App\Provincia;
 use App\Sucursal;
 use App\Empresa;
@@ -18,5 +20,9 @@ class Distrito extends Model
 
     public function empresa(){
     	return $this->hasMany(Empresa::class);
+    }
+
+    public function institucion(){
+    	return $this->hasMany(Institucion::class);
     }
 }
