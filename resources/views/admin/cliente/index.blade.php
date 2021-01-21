@@ -180,7 +180,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="departamento_id" id="departamento_idE" class="form-control">
+                                    <select name="departamento_id" id="departamento_id" class="form-control departamento_idE">
                                         <option>Elige</option>
                                         @foreach($departamentos as $departamento)
                                             <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
@@ -190,7 +190,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="provincia_id" id="provincia_idE" class="form-control">
+                                    <select name="provincia_id" id="provincia_id" class="form-control provincia_idE">
                                         <option>Elige</option>
                                         
                                     </select>
@@ -198,7 +198,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="distrito_id" id="distrito_idE" class="form-control">
+                                    <select name="distrito_id" id="distrito_id" class="form-control distrito_idE">
                                         <option>Elige</option>
                                         
                                     </select>

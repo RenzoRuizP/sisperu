@@ -25,4 +25,17 @@ class Empresa extends Model
 	public function institucion(){
 		return $this->hasMany(Institucion::class);
 	}
+
+	static function existeRuc(){
+		$numeroDocumento = $_GET['ndocumento'];
+		$empresas = Empresa::where('ruc', $numeroDocumento)->get();
+
+		if(count($empresas) > 0 ){
+			$empresas[0]->distrito->provincia->departamento;
+			return $empresas[0];
+
+		} else{
+				return false;
+		}
+	}
 }

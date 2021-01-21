@@ -43,10 +43,11 @@ class Persona extends Model
 		$personas = Persona::where('tipo_documento', $tipoDocumento)->where('numero_documento', $numeroDocumento)->get();
 
 		if(count($personas) > 0 ){
-			return response()->json($personas[0]);
+			$personas[0]->distrito->provincia->departamento;
+			return $personas[0];
 
 		} else{
-				return response()->json(false);
+				return false;
 		}
 	}
 }

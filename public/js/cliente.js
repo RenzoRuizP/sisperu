@@ -30,9 +30,9 @@ function activarInput(){
 
 	$('#emailE').attr( "disabled", true );
 
-	$('#departamento_idE').attr( "disabled", true );
-	$('#provincia_idE').attr( "disabled", true );
-	$('#distrito_idE').attr( "disabled", true );
+	$('.departamento_idE').attr( "disabled", true );
+	$('.provincia_idE').attr( "disabled", true );
+	$('.distrito_idE').attr( "disabled", true );
 
 }
 
@@ -61,9 +61,9 @@ function desactivarInput(){
 
 	$('#emailE').attr( "disabled", false );
 
-	$('#departamento_idE').attr( "disabled", false );
-	$('#provincia_idE').attr( "disabled", false );
-	$('#distrito_idE').attr( "disabled", false );
+	$('.departamento_idE').attr( "disabled", false );
+	$('.provincia_idE').attr( "disabled", false );
+	$('.distrito_idE').attr( "disabled", false );
 }
 
 
@@ -152,7 +152,7 @@ $("#modal_cliente").on('hidden.bs.modal', function(event) {
 
 	$(this).find("#registrar_cliente").find('input[name="_method"]').remove(); // para eliminar el input method del formulario
 });
-// buscar documento
+// buscar documento PERSONA
 $('input[name = "doc_id"]').on('blur', function(){
 	let _doc = $('input[name = "doc_id"]').val();
 	//alert(_url_web_+'/consulta/persona/existeDocumento');
@@ -166,20 +166,19 @@ $('input[name = "doc_id"]').on('blur', function(){
 	.done(function(data) {
 		
 		let _modal = $("#modal_cliente");
-		let _num_doc = data.original.numero_documento;
+		let _num_doc = data.numero_documento;
 		_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/cliente/'+_doc);
 		_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
-		if(_num_doc){
+		if(_num_doc){ //PERSONA
 			activarInput();
-			_modal.find('input[name="apellidos"]').val(data.original.apellidos);
-			_modal.find('input[name="nombres"]').val(data.original.nombres);
-			_modal.find('input[name="f_nacimiento"]').val(data.original.fecha_nacimiento);
-			_modal.find('input[name="celular"]').val(data.original.telefono);
-			_modal.find('input[name="email"]').val(data.original.email);
-			_modal.find('input[name="direccion"]').val(data.original.direccion);
+			_modal.find('input[name="apellidos"]').val(data.apellidos);
+			_modal.find('input[name="nombres"]').val(data.nombres);
+			_modal.find('input[name="f_nacimiento"]').val(data.fecha_nacimiento);
+			_modal.find('input[name="celular"]').val(data.telefono);
+			_modal.find('input[name="email"]').val(data.email);
+			_modal.find('input[name="direccion"]').val(data.direccion);
 		
-			_modal.modal('show');
-		}else{
+		}else{ 
 			desactivarInput();
 			_modal.find('input[name="apellidos"]').val("");
 			_modal.find('input[name="nombres"]').val("");
@@ -188,8 +187,51 @@ $('input[name = "doc_id"]').on('blur', function(){
 			_modal.find('input[name="email"]').val("");
 			_modal.find('input[name="direccion"]').val("");
 			
-			_modal.modal('show');
 		}
+		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
+		_modal.modal('show');
+		
+	});
+})
+
+// buscar ruc empresa
+$('input[name = "ruc"]').on('blur', function(){
+	let _doc = $('input[name = "ruc"]').val();
+	//alert(_url_web_+'/consulta/persona/existeDocumento');
+	//let _tipo = $('select[name = "tipo_documento"]').val();
+	$.ajax({
+		url: _url_web_+'/consulta/empresa/existeRuc',
+		type: 'get',
+		dataType: 'json',
+		data:{ndocumento:_doc}
+	})
+	.done(function(data) {
+		
+		let _modal = $("#modal_cliente");
+		let _num_doc = data.ruc;
+		_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/empresa/'+_doc);
+		_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
+		if(_num_doc){ //PERSONA
+			activarInput();
+			_modal.find('input[name="ruc"]').val(data.ruc);
+			_modal.find('input[name="razon_social"]').val(data.razon_social);
+			_modal.find('input[name="nombre_comercial"]').val(data.nombre);
+			_modal.find('input[name="telefono_empresa"]').val(data.telefono);
+			_modal.find('input[name="direccionE"]').val(data.direccion);
+			_modal.find('input[name="emailE"]').val(data.correo);
+		
+		}else{ // EMPRESA
+			desactivarInput();
+			_modal.find('input[name="ruc"]').val("");
+			_modal.find('input[name="razon_social"]').val("");
+			_modal.find('input[name="nombre_comercial"]').val("");
+			_modal.find('input[name="telefono_empresa"]').val("");
+			_modal.find('input[name="direccionE"]').val("");
+			_modal.find('input[name="emailE"]').val("");
+			
+		}
+		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
+		_modal.modal('show');
 		
 	});
 })
