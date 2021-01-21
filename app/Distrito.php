@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Cliente;
 use App\Institucion;
 use App\Provincia;
 use App\Sucursal;
 use App\Empresa;
+use App\Persona;
 use Illuminate\Database\Eloquent\Model;
 
 class Distrito extends Model
@@ -22,7 +24,15 @@ class Distrito extends Model
     	return $this->hasMany(Empresa::class);
     }
 
+    public function persona(){
+        return $this->hasMany(Persona::class);
+    }
+
     public function institucion(){
     	return $this->hasMany(Institucion::class);
+    }
+
+    public function cliente(){
+        return $this->hasMany(Cliente::class);// una distrito tiene muchas sucursales
     }
 }

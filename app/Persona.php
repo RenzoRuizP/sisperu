@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Cliente;
 use App\Trabajador;
+use App\Distrito;
 
 class Persona extends Model
 {
@@ -13,6 +14,10 @@ class Persona extends Model
     public function trabajador(){
     	return $this->hasOne(Trabajador::class);
 	}
+
+	public function distrito(){
+    	return $this->belongsTo(Distrito::class); // 1 sucursal esta en un distrito
+    }
 
 	public function nombre_completo(){
 		return $this->nombres.' '.$this->apellidos;

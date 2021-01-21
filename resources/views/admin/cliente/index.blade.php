@@ -104,27 +104,27 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="f_nacimiento" class="form-control" placeholder="F. Nacimiento*">
+                                    <input type="text" name="f_nacimiento" id="f_nacimiento" class="form-control" placeholder="F. Nacimiento*">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="celular" class="form-control" placeholder="Celular*">
+                                    <input type="text" name="celular" id="celular" class="form-control" placeholder="Celular*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <input type="email" name="email" class="form-control" placeholder="Email*">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email*">
                                 </div>
                                
                             </div>
                              <div class="form-row">
                                 
                                 <div class="form-group col-md-12">
-                                    <input type="text" name="direccion" class="form-control" placeholder="Dirección*">
+                                    <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="p_departamento" id="departamento_id" class="form-control">
+                                    <select name="departamento_id" id="departamento_id" class="form-control">
                                         <option>Elige</option>
                                         @foreach($departamentos as $departamento)
                                             <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="p_provincia" id="provincia_id" class="form-control">
+                                    <select name="provincia_id" id="provincia_id" class="form-control">
                                         <option>Elige</option>
                                         
                                     </select>
@@ -142,7 +142,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="p_distrio" id="distrito_id" class="form-control">
+                                    <select name="distrito_id" id="distrito_id" class="form-control">
                                         <option>Elige</option>
                                         
                                     </select>
@@ -155,32 +155,32 @@
                                     <input type="text" name="ruc" class="form-control" placeholder="RUC*">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="razon_social" class="form-control" placeholder="Razón Social*">
+                                    <input type="text" name="razon_social" id="razon_social" class="form-control" placeholder="Razón Social*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="nombre_comercial" class="form-control" placeholder="Nombre Comercial*">
+                                    <input type="text" name="nombre_comercial" id="nombre_comercial" class="form-control" placeholder="Nombre Comercial*">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="ruc" class="form-control" placeholder="Teléfono*">
+                                    <input type="text" name="telefono_empresa" id="telefono_empresa" class="form-control" placeholder="Teléfono*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 
                                 <div class="form-group col-md-12">
-                                    <input type="text" name="direccion" class="form-control" placeholder="Dirección*">
+                                    <input type="text" name="direccionE" id="direccionE" class="form-control" placeholder="Dirección*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 
                                 <div class="form-group col-md-12">
-                                    <input type="email" name="email" class="form-control" placeholder="Email*">
+                                    <input type="email" name="emailE" id="emailE" class="form-control" placeholder="Email*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="p_departamento" id="departamento_id" class="form-control">
+                                    <select name="departamento_id" id="departamento_idE" class="form-control">
                                         <option>Elige</option>
                                         @foreach($departamentos as $departamento)
                                             <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
@@ -190,7 +190,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="p_provincia" id="provincia_id" class="form-control">
+                                    <select name="provincia_id" id="provincia_idE" class="form-control">
                                         <option>Elige</option>
                                         
                                     </select>
@@ -198,7 +198,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <select name="p_distrio" id="distrito_id" class="form-control">
+                                    <select name="distrito_id" id="distrito_idE" class="form-control">
                                         <option>Elige</option>
                                         
                                     </select>

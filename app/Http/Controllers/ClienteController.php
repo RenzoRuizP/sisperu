@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Departamento;
 use App\Persona;
 use App\Cliente;
+use App\Empresa;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -18,10 +19,12 @@ class ClienteController extends Controller
     {
         $tipoDocumento = Persona::getTipoDocumento();
         $departamentos = Departamento::all();
+        $personas = Persona::whereNull('deleted_at')->get();
+        $empresas = Empresa::whereNull('deleted_at')->get();
         $js = ['cliente.js'];
         $clientes = Cliente::whereNull('deleted_at')->get();
 
-        return view("admin.cliente.index", compact('js', 'clientes', 'tipoDocumento', 'departamentos'));
+        return view("admin.cliente.index", compact('js', 'clientes', 'tipoDocumento', 'departamentos','personas', 'empresas'));
     }
 
     /**
@@ -46,6 +49,7 @@ class ClienteController extends Controller
         $cliente->tipo_cliente = $request->tipo_cliente;
         $cliente->numero_documento = $request->numero_documento;
         $cliente->nombres = $request->nombres;
+        $cliente->distrito_id = $request->distrito_id;
 
         $cliente->save();
 
@@ -71,7 +75,23 @@ class ClienteController extends Controller
      */
     public function edit($documento)
     {
-        return response()->json($cliente);
+        
+        $t_cliente = $documento->tipo_cliente;
+        $_id = $documento->numero_documento;
+           
+        if($t_cliente === "Persona"){
+            $personas = Persona::where('numero_documento', $_id)->get();
+            $personas[0]->distrito->provincia->departamento; 
+            return response()->json($personas[0]);
+        }
+        if($t_cliente === "Empresa"){
+           $empresas = Empresa::where('ruc', $_id)->get();
+           $empresas[0]->distrito->provincia->departamento; 
+            return response()->json($empresas[0]);
+        }
+       
+       
+        
     }
 
     /**

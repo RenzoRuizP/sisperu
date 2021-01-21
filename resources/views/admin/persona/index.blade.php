@@ -17,12 +17,12 @@
                         <th>ID</th>
                         <th>NOMBRES</th>
                         <th>APELLIDOS</th>
-                        <th>FECHA NAC.</th>
+                        <th>F. NAC.</th>
                         <th>TELÉFONO</th>
                         <th>EMAIL</th>
                         <th>DIRECCIÓN</th>
-                        <th>TIPO DOC.</th>
-                        <th>NÚMERO DE DOC.</th>
+                        <th>T. DOC.</th>
+                        <th>N° DOC.</th>
                         <th>SEXO</th>
                         <th>ACCIONES</th>
                     </tr>
