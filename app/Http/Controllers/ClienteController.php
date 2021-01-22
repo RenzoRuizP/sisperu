@@ -45,15 +45,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $cliente = new Cliente();
-        $cliente->tipo_cliente = $request->tipo_cliente;
-        $cliente->numero_documento = $request->numero_documento;
-        $cliente->nombres = $request->nombres;
-        $cliente->distrito_id = $request->distrito_id;
-
-        $cliente->save();
-
-        return redirect("mantenimiento/cliente");
+        $clientes = new $Cliente();
+        
+        
     }
 
     /**
@@ -64,7 +58,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        dd("hola");
     }
 
     /**
@@ -103,7 +97,31 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        /*
+        $razon_social_empresa = $cliente->razon_social;
+        
+        if()
+        {
+            $ruc = $cliente->ruc;
+            $empresas = Empresa::where('ruc', $ruc)->get();
+
+            $empresa->nombre =  $request->nombre;
+            $empresa->razon_social = $request->razon_social;
+            $empresa->distrito_id = $request->distrito_id;
+            $empresa->direccion = $request->direccion;
+            $empresa->ruc = $request->ruc;
+            $empresa->telefono = $request->telefono_empresa;
+            $empresa->correo = $request->emailE;
+
+            $empresa->save();
+
+        }else{
+
+        }
+        return redirect("mantenimiento/empresa");
+        //dd($cliente);
+
+        */
     }
 
     /**

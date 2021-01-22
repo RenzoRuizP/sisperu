@@ -49,8 +49,7 @@
         <div class="modal" tabindex="-1" role="dialog" id="modal_cliente">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form id="registrar_cliente" action="{{url('mantenimiento/cliente')}}" method="post">
-                    @csrf
+                
                     
                   <div class="modal-header">
                     <h5 class="modal-title">Agregar Cliente</h5>
@@ -79,6 +78,10 @@
                     <div class="tab-content">
                         
                         <div class="tab-pane show active" id="profile1">
+                            <form id="registrar_cliente" action="{{url('mantenimiento/cliente')}}" method="post">
+                                @csrf
+
+                                <input type="hidden" name="persona_id" id="persona_id">
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <select name="tipo_documento" class="form-control">
@@ -148,8 +151,17 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group col-md-12">
+                                <button type="button" id="guardar_cliente" class="btn btn-primary col-12">Save changes</button>
+                            </div>
+
+                        </form>
                         </div>
                         <div class="tab-pane" id="settings1">
+                            <form id="registrar_empresa" action="{{url('mantenimiento/cliente')}}" method="post">
+                                @csrf
+
+                                <input type="hidden" name="tipo_entidad" id="tipo_entidad">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <input type="text" name="ruc" class="form-control" placeholder="RUC*">
@@ -204,15 +216,20 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group col-md-12">
+                                <button type="button" id="guardar_empresa" class="btn btn-primary col-12">Save changes</button>
+                            </div>
+                            
+                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                        </form>
                         </div>
                     </div>
 
                   </div>
                   <div class="modal-footer">
-                    <button type="button" id="guardar_cliente" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
                   </div>
-                </form>
+                
             </div>
           </div>
         </div>

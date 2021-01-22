@@ -82,7 +82,7 @@
                   <div class="modal-body">
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <select name="tipo_institucion" name="tipo_institucion" class="form-control">
+                            <select name="tipo_institucion" ID="tipo_institucion" class="form-control">
                                     <option>Tipo institución</option>
                                 @foreach($tipoInstituciones as $key => $tipo)
                                     <option value="{{$key}}">{{$tipo}}</option>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <select name="empresa_id" class="form-control">
+                            <select name="empresa_id" id="empresa_id" class="form-control">
                                 <option>Empresa</option>
                                 @foreach($empresas as $empresa)
                                     <option value="{{$empresa->id}}">{{$empresa->nombre}}</option>

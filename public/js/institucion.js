@@ -38,7 +38,7 @@ $(".btn-editar").on('click', function(){ // editar
 $(".btn-eliminar").on('click', function() {
 	let _id = $(this).data('id');
 	$("#institucion_eliminar").attr('action', _url_web_+'/mantenimiento/institucion/'+_id);
-	demo.showSwal('confirm', 'eliminar', 'eliminar sucursal', function(){
+	demo.showSwal('confirm', 'eliminar', 'eliminar institucion', function(){
 		$("#institucion_eliminar").submit();
 	})
 });

@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-	activarInput();
+	//activarInput();
 
 });
 
@@ -68,10 +68,12 @@ function desactivarInput(){
 
 
 $("#guardar_cliente").on('click', function(){
+	let _id = $(this).data('id');
 	demo.showSwal('confirm', 'registrar', 'registrar cliente', function(){
 		$('#registrar_cliente').submit();
 	})
 });
+
 
 $(".btn-editar").on('click', function(){ // editar
 	let _id = $(this).data('id');
@@ -92,6 +94,7 @@ $(".btn-editar").on('click', function(){ // editar
 		
 	// PERSONA
 	if(data.tipo_documento){
+
 		_modal.find('select[name="tipo_documento"]').val(data.tipo_documento);
 		_modal.find('input[name="doc_id"]').val(data.numero_documento);
 		_modal.find('input[name="apellidos"]').val(data.apellidos);
@@ -129,7 +132,7 @@ $(".btn-editar").on('click', function(){ // editar
 	}	
 
 		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
-
+		//desactivarInput();
 		_modal.modal('show');
 	});
 	//desactivarInput();
@@ -170,7 +173,7 @@ $('input[name = "doc_id"]').on('blur', function(){
 		_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/cliente/'+_doc);
 		_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
 		if(_num_doc){ //PERSONA
-			activarInput();
+			//activarInput();
 			_modal.find('input[name="apellidos"]').val(data.apellidos);
 			_modal.find('input[name="nombres"]').val(data.nombres);
 			_modal.find('input[name="f_nacimiento"]').val(data.fecha_nacimiento);
@@ -179,7 +182,7 @@ $('input[name = "doc_id"]').on('blur', function(){
 			_modal.find('input[name="direccion"]').val(data.direccion);
 		
 		}else{ 
-			desactivarInput();
+			//desactivarInput();
 			_modal.find('input[name="apellidos"]').val("");
 			_modal.find('input[name="nombres"]').val("");
 			_modal.find('input[name="f_nacimiento"]').val("");
@@ -190,6 +193,8 @@ $('input[name = "doc_id"]').on('blur', function(){
 		}
 		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
 		_modal.modal('show');
+
+		
 		
 	});
 })
@@ -212,7 +217,7 @@ $('input[name = "ruc"]').on('blur', function(){
 		_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/empresa/'+_doc);
 		_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
 		if(_num_doc){ //PERSONA
-			activarInput();
+			//activarInput();
 			_modal.find('input[name="ruc"]').val(data.ruc);
 			_modal.find('input[name="razon_social"]').val(data.razon_social);
 			_modal.find('input[name="nombre_comercial"]').val(data.nombre);
@@ -221,7 +226,7 @@ $('input[name = "ruc"]').on('blur', function(){
 			_modal.find('input[name="emailE"]').val(data.correo);
 		
 		}else{ // EMPRESA
-			desactivarInput();
+			//desactivarInput();
 			_modal.find('input[name="ruc"]').val("");
 			_modal.find('input[name="razon_social"]').val("");
 			_modal.find('input[name="nombre_comercial"]').val("");
