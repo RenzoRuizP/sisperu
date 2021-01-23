@@ -40,8 +40,9 @@ class Persona extends Model
 	static function existeDocumento(){
 		$tipoDocumento = $_GET['tdocumento'];
 		$numeroDocumento = $_GET['ndocumento'];
+
 		$personas = Persona::where('tipo_documento', $tipoDocumento)->where('numero_documento', $numeroDocumento)->get();
-		dd($personas[0]->distrito->provincia->departamento);
+		//dd($personas[0]->distrito->provincia->departamento);
 		if(count($personas) > 0 ){
 			$personas[0]->distrito->provincia->departamento;
 			return $personas[0];

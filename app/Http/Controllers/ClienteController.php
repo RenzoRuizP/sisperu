@@ -45,35 +45,47 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //dd("Store cliente");
+        //dd('consultando documento persona: '.$request->doc_id);
+
+        
         
         if($request->tipo_documento)
         {
-            //dd("persona");
-            $persona = new Persona();
-            $persona->tipo_documento = $request->tipo_documento;
-
-            //dd($request->doc_id);
-            $persona->numero_documento = $request->doc_id;
-            $persona->apellidos = $request->apellidos;
-            $persona->nombres = $request->nombres;
-            $persona->fecha_nacimiento = $request->f_nacimiento;
-            $persona->telefono = $request->celular;
-            $persona->email = $request->email;
-            $persona->sexo = $request->sexo;
-            $persona->direccion = $request->direccion;
-            $persona->distrito_id = $request->distrito_id;
+             $documento_persona = $request->doc_id;
+             $persona = Persona::where('numero_documento', $documento_persona)->get();
             
-            $persona->save();
+            //dd($documento_persona.' = '.$persona[0]->numero_documento);
 
-            $cliente = new Cliente();
-            $cliente->tipo_cliente = $request->tipo_cliente_persona; //Persona
-            $cliente->nombres = $request->nombres;
-            $cliente->numero_documento = $request->doc_id;
-            $cliente->distrito_id = $request->distrito_id;
+            if($documento_persona !== $persona[0]->numero_documento){
 
-            $cliente->save();
 
+                $persona = new Persona();
+                $persona->tipo_documento = $request->tipo_documento;
+
+                //dd($request->doc_id);
+                $persona->numero_documento = $request->doc_id;
+                $persona->apellidos = $request->apellidos;
+                $persona->nombres = $request->nombres;
+                $persona->fecha_nacimiento = $request->f_nacimiento;
+                $persona->telefono = $request->celular;
+                $persona->email = $request->email;
+                $persona->sexo = $request->sexo;
+                $persona->direccion = $request->direccion;
+                $persona->distrito_id = $request->distrito_id;
+                
+                $persona->save();
+
+           }else{
+
+                $cliente = new Cliente();
+                $cliente->tipo_cliente = $request->tipo_cliente_persona; //Persona
+                $cliente->nombres = $request->nombres;
+                $cliente->numero_documento = $request->doc_id;
+                $cliente->distrito_id = $request->distrito_id;
+
+                $cliente->save();
+            }
+            
         }else{
             //dd("empresa");
             $empresa = new Empresa();

@@ -84,3 +84,50 @@ $(".btn-eliminar").on('click', function() {
 	})
 });
 
+
+// MOSTRAR DATOS POR MEDIO DE DOCUMENTO PERSONA O EMPRESA
+
+// buscar documento PERSONA
+$('input[name = "doc_id"]').on('blur', function(){
+	let _doc = $('input[name = "doc_id"]').val();
+	//alert(_url_web_+'/consulta/persona/existeDocumento');
+	let _tipo = $('select[name = "tipo_documento"]').val();
+	$.ajax({
+		url: _url_web_+'/consulta/persona/existeDocumento',
+		type: 'get',
+		dataType: 'json',
+		data:{tdocumento:_tipo,ndocumento:_doc}
+	})
+	.done(function(data) {
+		
+		let _modal = $("#modal_cliente");
+		let _num_doc = data.numero_documento;
+		//_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/cliente/'+_doc);
+		//_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
+		if(_num_doc){ //PERSONA
+			//activarInput();
+			_modal.find('input[name="apellidos"]').val(data.apellidos);
+			_modal.find('input[name="nombres"]').val(data.nombres);
+			_modal.find('input[name="f_nacimiento"]').val(data.fecha_nacimiento);
+			_modal.find('input[name="celular"]').val(data.telefono);
+			_modal.find('input[name="email"]').val(data.email);
+			_modal.find('input[name="direccion"]').val(data.direccion);
+			_modal.find('select[name="sexo"]').val(data.sexo);
+		
+		}else{ 
+			//desactivarInput();
+			_modal.find('input[name="apellidos"]').val("");
+			_modal.find('input[name="nombres"]').val("");
+			_modal.find('input[name="f_nacimiento"]').val("");
+			_modal.find('input[name="celular"]').val("");
+			_modal.find('input[name="email"]').val("");
+			_modal.find('input[name="direccion"]').val("");
+			
+		}
+		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
+		_modal.modal('show');
+
+		
+		
+	});
+})
