@@ -24,19 +24,21 @@ $(".btn-editar").on('click', function(){ // editar
 		
 		let _modal = $("#modal_cliente");
 		let _num_doc = data.ruc;
-		_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/cliente/'+_id);
-		_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
-
 		if(_num_doc)
 		{
+			_modal.find("#registrar_empresa").attr('action', _url_web_+'/mantenimiento/cliente/'+_id);
+			_modal.find("#registrar_empresa").append('<input type="hidden" name="_method" value="PUT">');
+
 			_modal.find('input[name="ruc"]').val(data.ruc);
 			_modal.find('input[name="razon_social"]').val(data.razon_social);
 			_modal.find('input[name="nombre_comercial"]').val(data.nombre);
 			_modal.find('input[name="telefono_empresa"]').val(data.telefono);
 			_modal.find('input[name="direccionE"]').val(data.direccion);
 			_modal.find('input[name="emailE"]').val(data.correo);
-			
+
 		}else{
+			_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/cliente/'+_id);
+			_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');	
 
 			_modal.find('select[name="tipo_documento"]').val(data.tipo_documento);
 			_modal.find('input[name="doc_id"]').val(data.numero_documento);
@@ -47,8 +49,8 @@ $(".btn-editar").on('click', function(){ // editar
 			_modal.find('input[name="email"]').val(data.email);
 			_modal.find('select[name="sexo"]').val(data.sexo);
 			_modal.find('input[name="direccion"]').val(data.direccion);
-
 		}
+		
 		
 		
 		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
@@ -128,6 +130,49 @@ $('input[name = "doc_id"]').on('blur', function(){
 		_modal.modal('show');
 
 		
+		
+	});
+});
+
+
+// buscar ruc empresa
+$('input[name = "ruc"]').on('blur', function(){
+	let _doc = $('input[name = "ruc"]').val();
+	//alert(_url_web_+'/consulta/persona/existeDocumento');
+	//let _tipo = $('select[name = "tipo_documento"]').val();
+	$.ajax({
+		url: _url_web_+'/consulta/empresa/existeRuc',
+		type: 'get',
+		dataType: 'json',
+		data:{ndocumento:_doc}
+	})
+	.done(function(data) {
+		
+		let _modal = $("#modal_cliente");
+		let _num_doc = data.ruc;
+		//_modal.find("#registrar_cliente").attr('action', _url_web_+'/mantenimiento/empresa/'+_doc);
+		//_modal.find("#registrar_cliente").append('<input type="hidden" name="_method" value="PUT">');
+		if(_num_doc){ //PERSONA
+			//activarInput();
+			_modal.find('input[name="ruc"]').val(data.ruc);
+			_modal.find('input[name="razon_social"]').val(data.razon_social);
+			_modal.find('input[name="nombre_comercial"]').val(data.nombre);
+			_modal.find('input[name="telefono_empresa"]').val(data.telefono);
+			_modal.find('input[name="direccionE"]').val(data.direccion);
+			_modal.find('input[name="emailE"]').val(data.correo);
+		
+		}else{ // EMPRESA
+			//desactivarInput();
+			_modal.find('input[name="ruc"]').val("");
+			_modal.find('input[name="razon_social"]').val("");
+			_modal.find('input[name="nombre_comercial"]').val("");
+			_modal.find('input[name="telefono_empresa"]').val("");
+			_modal.find('input[name="direccionE"]').val("");
+			_modal.find('input[name="emailE"]').val("");
+			
+		}
+		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
+		_modal.modal('show');
 		
 	});
 })

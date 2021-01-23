@@ -87,26 +87,36 @@ class ClienteController extends Controller
             }
             
         }else{
-            //dd("empresa");
-            $empresa = new Empresa();
             
-            $empresa->ruc = $request->ruc;
-            $empresa->razon_social = $request->razon_social;
-            $empresa->nombre =  $request->nombre_comercial;
-            $empresa->telefono = $request->telefono_empresa;
-            $empresa->direccion = $request->direccionE;
-            $empresa->correo = $request->emailE;
-            $empresa->distrito_id = $request->distrito_id;
+            //dd($request->ruc);
+            $documento_empresa = $request->ruc;
+            $empresa = Empresa::where('ruc', $documento_empresa)->get();
             
-            $empresa->save(); 
+            //dd($documento_empresa.' = '.$empresa[0]->ruc);
 
-            $cliente = new Cliente();
-            $cliente->tipo_cliente = $request->tipo_entidad_empresa;
-            $cliente->nombres = $request->nombre_comercial;
-            $cliente->numero_documento = $request->ruc;
-            $cliente->distrito_id = $request->distrito_id;
+            if($documento_empresa !== $empresa[0]->ruc){
 
-            $cliente->save();
+                $empresa = new Empresa();
+                
+                $empresa->ruc = $request->ruc;
+                $empresa->razon_social = $request->razon_social;
+                $empresa->nombre =  $request->nombre_comercial;
+                $empresa->telefono = $request->telefono_empresa;
+                $empresa->direccion = $request->direccionE;
+                $empresa->correo = $request->emailE;
+                $empresa->distrito_id = $request->distrito_id;
+                
+                $empresa->save(); 
+            }else{
+                $cliente = new Cliente();
+                $cliente->tipo_cliente = $request->tipo_entidad_empresa;
+                $cliente->nombres = $request->nombre_comercial;
+                $cliente->numero_documento = $request->ruc;
+                $cliente->distrito_id = $request->distrito_id;
+
+                $cliente->save();
+            }
+            
         }
 
 
@@ -180,27 +190,28 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
 
+
         $t_cliente = $cliente->tipo_cliente;
-        $doc = $cliente->numero_documento;
+        
          if($t_cliente === "Persona"){
             
+            $doc = $cliente->numero_documento;
+            $persona = Persona::where('numero_documento', $doc)->first();
             
-            $persona = Persona::where('numero_documento', $doc)->get();
-            
-            $persona[0]->tipo_documento = $request->tipo_documento;
+            $persona->tipo_documento = $request->tipo_documento;
 
             //PERSONA
-            $persona[0]->numero_documento = $request->doc_id;
-            $persona[0]->apellidos = $request->apellidos;
-            $persona[0]->nombres = $request->nombres;
-            $persona[0]->fecha_nacimiento = $request->f_nacimiento;
-            $persona[0]->telefono = $request->celular;
-            $persona[0]->email = $request->email;
-            $persona[0]->sexo = $request->sexo;
-            $persona[0]->direccion = $request->direccion;
-            $persona[0]->distrito_id = $request->distrito_id;
+            $persona->numero_documento = $request->doc_id;
+            $persona->apellidos = $request->apellidos;
+            $persona->nombres = $request->nombres;
+            $persona->fecha_nacimiento = $request->f_nacimiento;
+            $persona->telefono = $request->celular;
+            $persona->email = $request->email;
+            $persona->sexo = $request->sexo;
+            $persona->direccion = $request->direccion;
+            $persona->distrito_id = $request->distrito_id;
 
-            $persona[0]->save();
+            $persona->save();
 
             $cliente->tipo_cliente = $request->tipo_cliente_persona; //CLIENTE
             $cliente->nombres = $request->nombres;
@@ -210,17 +221,18 @@ class ClienteController extends Controller
             $cliente->save();
 
          }else{
+            $doc_empresa = $cliente->numero_documento;
 
-            $empresa = Empresa::where('ruc', $doc)->get();
-            $empresa[0]->ruc = $request->ruc;
-            $empresa[0]->razon_social = $request->razon_social;
-            $empresa[0]->nombre =  $request->nombre_comercial;
-            $empresa[0]->telefono = $request->telefono_empresa;
-            $empresa[0]->direccion = $request->direccionE;
-            $empresa[0]->correo = $request->emailE;
-            $empresa[0]->distrito_id = $request->distrito_id;
+            $empresa = Empresa::where('ruc', $doc_empresa)->first();
+            $empresa->ruc = $request->ruc;
+            $empresa->razon_social = $request->razon_social;
+            $empresa->nombre =  $request->nombre_comercial;
+            $empresa->telefono = $request->telefono_empresa;
+            $empresa->direccion = $request->direccionE;
+            $empresa->correo = $request->emailE;
+            $empresa->distrito_id = $request->distrito_id;
             
-            $empresa[0]->save(); 
+            $empresa->save(); 
 
             //$cliente = new Cliente();
             $cliente->tipo_cliente = $request->tipo_entidad_empresa;
