@@ -30,7 +30,7 @@ class PersonaController extends Controller
     {
 
     	$persona = new Persona();
-        dd("ssssssssssss");
+        //dd("ssssssssssss");
     	$persona->nombres = $request->nombres;
     	$persona->apellidos = $request->apellidos;
     	$persona->fecha_nacimiento = $request->fecha_nacimiento;
@@ -60,7 +60,7 @@ class PersonaController extends Controller
 
     public function update(Request $request, Persona $persona)//actualizo un registro de la base de datos
     {
-        dd("aaaa");
+        //dd("aaaa");
        	$persona->nombres = $request->nombres;
     	$persona->apellidos = $request->apellidos;
     	$persona->fecha_nacimiento = $request->fecha_nacimiento;

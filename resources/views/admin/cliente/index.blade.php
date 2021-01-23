@@ -31,7 +31,7 @@
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$cliente->id}}" 
-                                data-name="{{$cliente->tipo_cliente}}"
+                                data-tipo="{{$cliente->tipo_cliente}}"
                                 >Editar</button>
                                 
                                 <button data-id="{{$cliente->id}}" class="btn btn-danger btn-eliminar">Eliminar</button>
@@ -41,7 +41,7 @@
                 </tbody>
             </table>
         </div>
-        <form method="post" id="usuario_eliminar">
+        <form method="post" id="cliente_eliminar">
             @csrf
             @method('DELETE')
         </form>
@@ -81,7 +81,7 @@
                             <form id="registrar_cliente" action="{{url('mantenimiento/cliente')}}" method="post">
                                 @csrf
 
-                                <input type="hidden" name="persona_id" id="persona_id">
+                                <input type="hidden" name="tipo_cliente_persona" id="tipo_cliente_persona" value="Persona">
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <select name="tipo_documento" class="form-control">
@@ -107,15 +107,22 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="f_nacimiento" id="f_nacimiento" class="form-control" placeholder="F. Nacimiento*">
+                                    <input type="date" name="f_nacimiento" id="f_nacimiento" class="form-control" placeholder="F. Nacimiento*">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <input type="text" name="celular" id="celular" class="form-control" placeholder="Celular*">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-12">
+                                <div class="form-group col-md-6">
                                     <input type="email" name="email" id="email" class="form-control" placeholder="Email*">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <select name="sexo" class="form-control">
+                                        <option>Elige</option>
+                                        <option value="0">Hombre</option>
+                                        <option value="1">Mujer</option>
+                                    </select>
                                 </div>
                                
                             </div>
@@ -161,10 +168,10 @@
                             <form id="registrar_empresa" action="{{url('mantenimiento/cliente')}}" method="post">
                                 @csrf
 
-                                <input type="hidden" name="tipo_entidad" id="tipo_entidad">
+                                <input type="hidden" name="tipo_entidad_empresa" id="tipo_entidad_empresa" value="Empresa">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="ruc" class="form-control" placeholder="RUC*">
+                                    <input type="text" name="ruc" id="ruc" class="form-control" placeholder="RUC*">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <input type="text" name="razon_social" id="razon_social" class="form-control" placeholder="Razón Social*">
@@ -225,9 +232,6 @@
                         </div>
                     </div>
 
-                  </div>
-                  <div class="modal-footer">
-                    
                   </div>
                 
             </div>
