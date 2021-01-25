@@ -43,7 +43,7 @@
                             <td>{{$institucion->telefono}}</td>
                             <td>{{$institucion->distrito->nombre}}</td>
                             <td>{{$institucion->direccion}}</td>
-                            <td>{{$institucion->empresa->nombre}}</td>
+                            <td>{{$institucion->empresas->nombre}}</td>
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$institucion->id}}" 

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Anamnesis;
 use App\Trabajador;
 use App\User;
 
@@ -42,6 +43,10 @@ class User extends Authenticatable
 
     public function trabajador(){
         return $this->belongsTo(Trabajador::class);
+    }
+
+    public function anamnesis(){
+        return $this->hasMany(Anamnesis::class);
     }
 
 }

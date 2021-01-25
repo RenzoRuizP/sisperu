@@ -14,8 +14,8 @@ class Trabajador extends Model
 {
     protected $table="trabajadores";
 
-    public function usuario(){
-    	return $this->hasOne(User::class); // relación de 1 a 1
+    public function user(){
+    	return $this->hasMany(User::class); // relación de 1 a 1
     }
 
     public function persona(){

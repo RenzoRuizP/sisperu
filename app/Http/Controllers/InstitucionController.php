@@ -6,6 +6,7 @@ use App\Empresa;
 use App\Institucion;
 use App\Departamento;
 use App\Distrito;
+
 use Illuminate\Http\Request;
 
 class InstitucionController extends Controller
@@ -19,6 +20,7 @@ class InstitucionController extends Controller
     {
         $departamentos = Departamento::all();
         $empresas = Empresa::whereNull('deleted_at')->get();
+        
         $tipoInstituciones = Institucion::getTipoInstitucion();
         $distritos = Distrito::whereNull('deleted_at')->get();
         $js = ['institucion.js'];

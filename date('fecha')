@@ -1,0 +1,25 @@
+Model created successfully.
+Created Migration: 2021_01_25_171123_create_$table-;s_table
+
+   InvalidArgumentException  : Model name contains invalid characters.
+
+  at C:\xampp\htdocs\sisperu_\vendor\laravel\framework\src\Illuminate\Routing\Console\ControllerMakeCommand.php:159
+    155|      */
+    156|     protected function parseModel($model)
+    157|     {
+    158|         if (preg_match('([^A-Za-z0-9_/\\\\])', $model)) {
+  > 159|             throw new InvalidArgumentException('Model name contains invalid characters.');
+    160|         }
+    161| 
+    162|         $model = trim(str_replace('/', '\\', $model), '\\');
+    163|
+
+  Exception trace:
+
+  1   Illuminate\Routing\Console\ControllerMakeCommand::parseModel("App\$table-;")
+      C:\xampp\htdocs\sisperu_\vendor\laravel\framework\src\Illuminate\Routing\Console\ControllerMakeCommand.php:133
+
+  2   Illuminate\Routing\Console\ControllerMakeCommand::buildModelReplacements([])
+      C:\xampp\htdocs\sisperu_\vendor\laravel\framework\src\Illuminate\Routing\Console\ControllerMakeCommand.php:93
+
+  Please use the argument -v to see more details.
