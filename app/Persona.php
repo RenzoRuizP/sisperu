@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Paciente;
 use App\Cliente;
 use App\Trabajador;
 use App\Distrito;
@@ -19,6 +20,14 @@ class Persona extends Model
     	return $this->belongsTo(Distrito::class); // 1 sucursal esta en un distrito
     }
 
+    public function cliente(){
+		return $this->belongsTo(Cliente::class);
+	}
+
+	public function paciente(){
+		return $this->hasOne(Persona::class);
+	}
+
 	public function nombre_completo(){
 		return $this->nombres.' '.$this->apellidos;
 	}
@@ -31,10 +40,6 @@ class Persona extends Model
 			4 => 'OTROS'
 		];
 		return $salida;
-	}
-
-	public function cliente(){
-		return $this->belongsTo(Cliente::class);
 	}
 
 	static function existeDocumento(){
