@@ -19,7 +19,7 @@ class DistribuidorController extends Controller
         $empresas = Empresa::whereNull('deleted_at')->get();
         $js = ['distribuidor.js'];
         $distribuidores = Distribuidor::whereNull('deleted_at')->get();
-
+        //dd($distribuidores->empresa[0]);
         return view(
                     "admin.distribuidor.index", 
                     compact(

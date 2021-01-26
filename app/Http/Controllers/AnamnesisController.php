@@ -30,7 +30,7 @@ class AnamnesisController extends Controller
         // get(): devuelve coleción de objetos
         //first(): devuelve solo el objeto
         $anamnesis = Anamnesis::whereNull('deleted_at')->get();
-        //dd($anamnesis->user->trabajador->persona->nombres);
+       // dd($anamnesis);
         return view("admin.anamnesis.index", compact('js', 'anamnesis', 'pacientes', 'personas', 'usuarios', 'trabajadores'));
 
     }

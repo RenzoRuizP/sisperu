@@ -122,7 +122,7 @@
                                 <option>Elige</option>
                                 @foreach($personas as $persona)
 
-                                    <option value="{{$persona->persona_id}}">{{$persona->nombres}}</option>
+                                    <option value="{{$persona->id}}">{{$persona->nombres}}</option>
                                 @endforeach
                             </select>
                          

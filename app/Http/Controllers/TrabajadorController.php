@@ -58,7 +58,7 @@ class TrabajadorController extends Controller
         $trabajador->horas_trabajo = $request->horas_trabajo;
         $trabajador->tiempo_refrigerio = $request->tiempo_refrigerio;
         $trabajador->persona_id = $request->persona_id;
-
+        
         $trabajador->save();
         return redirect("mantenimiento/trabajador");
     }

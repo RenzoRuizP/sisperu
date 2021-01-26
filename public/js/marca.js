@@ -11,7 +11,7 @@ $("#guardar_marca").on('click', function(){
 //ELININAR
 
 $(".btn-eliminar").on('click', function(){ // eliminar
-	let _id = $(this).data('numero_documento');
+	let _id = $(this).data('id');
 		$("#marca_eliminar").attr('action', _url_web_+'/mantenimiento/marca/'+_id);
 	demo.showSwal('confirm', 'eliminar', 'eliminar marca', function(){
 

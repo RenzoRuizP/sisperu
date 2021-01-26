@@ -28,7 +28,7 @@ $(".btn-editar").on('click', function(){ // editar
 		_modal.find('input[name="sueldo"]').val(data.sueldo);
 		_modal.find('input[name="horas_trabajo"]').val(data.horas_trabajo);
 		_modal.find('input[name="tiempo_refrigerio"]').val(data.tiempo_refrigerio);
-		_modal.find('input[name="persona_id"]').val(data.persona_id);
+		_modal.find('select[name="persona_id"]').val(data.persona_id);
 		
 		_modal.modal('show');
 	});

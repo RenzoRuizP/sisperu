@@ -16,6 +16,8 @@ class CategoriaController extends Controller
     {
         $js = ['categoria.js'];
         $categorias = Categoria::whereNull("deleted_at")->get();
+
+        
         return view('admin.categoria.index', compact('js', 'categorias'));
     }
 

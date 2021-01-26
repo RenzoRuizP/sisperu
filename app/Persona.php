@@ -25,7 +25,7 @@ class Persona extends Model
 	}
 
 	public function paciente(){
-		return $this->hasOne(Persona::class);
+		return $this->hasOne(Paciente::class);
 	}
 
 	public function nombre_completo(){

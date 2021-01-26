@@ -37,13 +37,12 @@
                                 if($institucion->tipo_institucion == 3)
                                     echo '<td>CONSULTORIO PARTICULAR</td>';
                             @endphp
-
-                         
+ 
                             <td>{{$institucion->nombre}}</td>
                             <td>{{$institucion->telefono}}</td>
                             <td>{{$institucion->distrito->nombre}}</td>
                             <td>{{$institucion->direccion}}</td>
-                            <td>{{$institucion->empresas->nombre}}</td>
+                            <td>{{$institucion->empresa->nombre}}</td>
                             <td>
                                 <button class="btn btn-success btn-editar" 
                                 data-id="{{$institucion->id}}" 

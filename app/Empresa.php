@@ -27,7 +27,7 @@ class Empresa extends Model
 		return $this->hasMany(Institucion::class);
 	}
 
-	public function Distribuidor(){
+	public function distribuidor(){
 		return $this->hasMany(Distribuidor::class);
 	}
 
