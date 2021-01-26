@@ -15,4 +15,24 @@ class Paciente extends Model
     public function anamnesis(){
     	return $this->hasMany(Anamnesis::class);
     }
+
+    static function autocomplete(){ 
+    	$salida = [];
+    	$personas = Persona::has('paciente')->where(
+    												'numero_documento', 'LIKE', '%'.$_GET['term'].'%'
+    												)->orWhere(
+    															'nombres', 'LIKE', '%'.$_GET['term'].'%'
+    														   )->orWhere(
+    														   				'apellidos', 'LIKE', '%'.$_GET['term'].'%'
+    														   			  )->get();
+    	foreach ($personas as $persona) {
+    			
+    			array_push($salida, array(
+    				'id'=>$persona->paciente->id, 
+    				'label'=>$persona->numero_documento.' - '.$persona->nombres.' '.$persona->apellidos,
+    				'value'=> $persona->numero_documento.' - '.$persona->nombres.' '.$persona->apellidos // lo que queda seleccionado en el input.
+    			));
+    	}
+    	return $salida;
+    }
 }

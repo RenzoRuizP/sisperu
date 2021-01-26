@@ -23,7 +23,7 @@ Route::delete('mantenimiento/{modelo}/{id}', 'PageController@delete');// elimina
 Route::get('mantenimiento/{modelo}/{id}/edit', 'PageController@select'); // extraer datos para el formulario en json
 Route::get('mantenimiento/{modelo}', 'PageController@getPage'); //mostrar datos para listar
 Route::get('consulta/{modelo}/{funcion}', 'PageController@ejecutarFuncion'); // ruta para combo box
-
+Route::get('historia-clinica/evolucion/{paciente?}', 'HistoriaClinicaController@evolucion');
 Auth::routes();
 
 

@@ -30,5 +30,6 @@
     <!-- Js Tree -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
 
+    <link href="{{asset('css')}}/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 </head>

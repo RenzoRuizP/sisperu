@@ -51,3 +51,4 @@
     <!-- demo app -->
     <!-- end demo js-->
     <script type="text/javascript" src="{{asset('js/base.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-ui.min.js')}}"></script>

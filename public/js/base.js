@@ -135,4 +135,19 @@ function cargarComboProvincia(_id) {
 
     });
 
+    $("#contacto_cita").autocomplete({
+
+    source: _url_web_ + "/consulta/paciente/autocomplete",
+
+    minLength: 2,
+
+    select: function(event, ui) {
+
+       $("#bs-cont").attr("href", _url_web_+'/historia-clinica/evolucion/' + ui.item.id);
+
+
+    }
+
+});
+
   })
