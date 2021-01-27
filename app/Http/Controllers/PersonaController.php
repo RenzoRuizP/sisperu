@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Departamento;
+use App\Distrito;
 use App\Persona;
 class PersonaController extends Controller
 {
@@ -15,9 +16,12 @@ class PersonaController extends Controller
     public function index()
     {
         //$sucursales = Sucursal::whereNull('deleted_at')->get();
+        $departamentos = Departamento::all();
+        $distritos = Distrito::whereNull('deleted_at')->get();
         $js=['persona.js'];
         $personas = Persona::whereNull('deleted_at')->get();
-        return view("admin.persona.index", compact('js', 'personas'));
+        
+        return view("admin.persona.index", compact('js', 'personas', 'distritos', 'departamentos'));
     }
 
    
@@ -36,6 +40,10 @@ class PersonaController extends Controller
     	$persona->fecha_nacimiento = $request->fecha_nacimiento;
     	$persona->telefono = $request->telefono;
     	$persona->email = $request->email;
+        $persona->estado_civil = $request->estado_civil;
+        $persona->edad = $request->edad;
+        $persona->profesion = $request->profesion;
+        $persona->distrito_id = $request->distrito_id;
     	$persona->direccion = $request->direccion;
     	$persona->tipo_documento = $request->tipo_documento;
     	$persona->numero_documento = $request->numero_documento;
@@ -54,7 +62,7 @@ class PersonaController extends Controller
    
     public function edit(Persona $persona)// devuelve 1 registro de una tabla desde la base de datos.
     {
-    
+        $persona->distrito->provincia->departamento;
         return response()->json($persona);
     }
 
@@ -62,14 +70,18 @@ class PersonaController extends Controller
     {
         //dd("aaaa");
        	$persona->nombres = $request->nombres;
-    	$persona->apellidos = $request->apellidos;
-    	$persona->fecha_nacimiento = $request->fecha_nacimiento;
-    	$persona->telefono = $request->telefono;
-    	$persona->email = $request->email;
-    	$persona->direccion = $request->direccion;
-    	$persona->tipo_documento = $request->tipo_documento;
-    	$persona->numero_documento = $request->numero_documento;
-    	$persona->sexo = $request->sexo;
+        $persona->apellidos = $request->apellidos;
+        $persona->fecha_nacimiento = $request->fecha_nacimiento;
+        $persona->telefono = $request->telefono;
+        $persona->email = $request->email;
+        $persona->estado_civil = $request->estado_civil;
+        $persona->edad = $request->edad;
+        $persona->profesion = $request->profesion;
+        $persona->distrito_id = $request->distrito_id;
+        $persona->direccion = $request->direccion;
+        $persona->tipo_documento = $request->tipo_documento;
+        $persona->numero_documento = $request->numero_documento;
+        $persona->sexo = $request->sexo;
     	$persona->save();
 
     	return redirect("mantenimiento/persona");

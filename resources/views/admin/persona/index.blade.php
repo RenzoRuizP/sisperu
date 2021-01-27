@@ -96,7 +96,19 @@
                     </button>
                   </div>
                   <div class="modal-body">
-
+                    <div class="form-group">
+                        Tipo Documento 
+                            <select name="tipo_documento" class="form-control">
+                                <option>Elige</option>
+                                <option value="0">RUC</option>
+                                <option value="1">DNI</option>
+                                <option value="2">CARNET DE EXTRANJERIA</option>
+                            </select>
+                        
+                    </div>
+                    <div class="form-group">
+                        número de documento <input type="text" name="numero_documento" class="form-control" maxlength="11" onkeypress="ValidaSoloNumeros();">
+                    </div>
                     <div class="form-group">
                         Nombres: <input type="text" name="nombres" class="form-control">
                     </div>
@@ -113,27 +125,53 @@
                         Email <input type="email" name="email" class="form-control">
                     </div>
                     <div class="form-group">
+                        Estado Civil 
+                            <select name="estado_civil" class="form-control">
+                                <option>Elige</option>
+                                <option value="0">SOLTERO</option>
+                                <option value="1">CASADO</option>
+                                <option value="2">VIUDO</option>
+                                <option value="3">DIVORCIADO</option>
+                                <option value="4">CONVIVIENTE</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        Edad <input type="text" name="edad" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Profesión <input type="text" name="profesion" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        Departamento:
+                            <select name="departamento_id" id = "departamento_id" class="form-control">
+                                <option>Elige</option>
+                                @foreach($departamentos as $departamento)
+                                 <option value="{{$departamento->id}}">{{$departamento->nombre}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        Provincia:
+                            <select name="provincia_id" id="provincia_id" class="form-control">
+                                
+                            </select>
+                    </div>
+                    <div class="form-group">
+                    Distrito 
+                        <select class="form-control" name="distrito_id" id="distrito_id">
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
                         Dirección <input type="text" name="direccion" class="form-control">
                     </div>
-                    <div class="form-group">
-                        Tipo Documento 
-                            <select name="tipo_documento" class="form-control">
-                                <option>Elige</option>
-                                <option value="0">RUC</option>
-                                <option value="1">DNI</option>
-                                <option value="2">CARNET DE EXTRANJERIA</option>
-                            </select>
-                        
-                    </div>
-                    <div class="form-group">
-                        número de documento <input type="text" name="numero_documento" class="form-control" maxlength="11" onkeypress="ValidaSoloNumeros();">
-                    </div>
+                    
                     <div class="form-group">
                         Sexo 
                             <select name="sexo" class="form-control">
                                 <option>Elige</option>
-                                <option value="0">Hombre</option>
-                                <option value="1">Mujer</option>
+                                <option value="0">HOMBRE</option>
+                                <option value="1">MUJER</option>
                             </select>
                      
                     </div>

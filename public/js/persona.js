@@ -26,6 +26,10 @@ $(".btn-editar").on('click', function(){ // editar
 		_modal.find('input[name="fecha_nacimiento"]').val(data.fecha_nacimiento);
 		_modal.find('input[name="telefono"]').val(data.telefono);
 		_modal.find('input[name="email"]').val(data.email);
+		_modal.find('select[name="estado_civil"]').val(data.estado_civil);
+		_modal.find('input[name="edad"]').val(data.edad);
+		_modal.find('input[name="profesion"]').val(data.profesion);
+		cargarComboUbigeo(data.distrito.provincia.departamento.id, data.distrito.provincia.id, data.distrito.id);
 		_modal.find('input[name="direccion"]').val(data.direccion);
 		_modal.find('select[name="tipo_documento"]').val(data.tipo_documento);
 		_modal.find('input[name="numero_documento"]').val(data.numero_documento);

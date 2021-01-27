@@ -85,11 +85,11 @@
                                 </div>
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Edad</label>
                                 <div class="col-1">
-                                    <input type="text" disabled class="form-control" value="">
+                                    <input type="text" disabled class="form-control" value="{{$paciente->persona->edad}}">
                                 </div>
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Telefono</label>
                                 <div class="col-3">
-                                    <input type="text" class="form-control" name="telefono_persona" value="">
+                                    <input type="text" class="form-control" name="telefono_persona" value="{{$paciente->persona->telefono}}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -132,17 +132,17 @@
                                 </div>
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Celular</label>
                                 <div class="col-2">
-                                    <input type="text" class="form-control" name="celular_persona" value="{{$paciente->persona->telefono}}">
+                                    <input type="text" class="form-control" name="celular_persona" value="{{$paciente->persona->celular}}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Correo</label>
                                 <div class="col-4">
-                                    <input type="text" class="form-control" name="email_persona" value="">
+                                    <input type="text" class="form-control" name="email_persona" value="{{$paciente->persona->email}}">
                                 </div>
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Profesión</label>
                                 <div class="col-4">
-                                    <input type="text" name="profesion_persona" class="form-control" value="">
+                                    <input type="text" name="profesion_persona" class="form-control" value="{{$paciente->persona->profesion}}">
                                 </div>
                             </div>
                             <div class="form-group row">

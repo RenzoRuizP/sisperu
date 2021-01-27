@@ -41,7 +41,19 @@ class Persona extends Model
 		];
 		return $salida;
 	}
+/*
+	static function getEstadoCivil(){
+		$salida = [
+			1 => 'Soltero',
+			2 => 'Casado',
+			3 => 'Viudo',
+			4 => 'Divorciado',
+			5 => 'Conviviente'
+		];
 
+			return $salida;
+	}
+*/
 	static function existeDocumento(){
 		$tipoDocumento = $_GET['tdocumento'];
 		$numeroDocumento = $_GET['ndocumento'];
