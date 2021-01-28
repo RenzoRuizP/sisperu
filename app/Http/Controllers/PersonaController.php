@@ -18,10 +18,11 @@ class PersonaController extends Controller
         //$sucursales = Sucursal::whereNull('deleted_at')->get();
         $departamentos = Departamento::all();
         $distritos = Distrito::whereNull('deleted_at')->get();
+        $estadosCiviles = Persona::getEstadoCivil();
         $js=['persona.js'];
         $personas = Persona::whereNull('deleted_at')->get();
         
-        return view("admin.persona.index", compact('js', 'personas', 'distritos', 'departamentos'));
+        return view("admin.persona.index", compact('js', 'personas', 'distritos', 'departamentos','estadosCiviles'));
     }
 
    
@@ -43,6 +44,7 @@ class PersonaController extends Controller
         $persona->estado_civil = $request->estado_civil;
         $persona->edad = $request->edad;
         $persona->profesion = $request->profesion;
+        $persona->celular = $request->celular;
         $persona->distrito_id = $request->distrito_id;
     	$persona->direccion = $request->direccion;
     	$persona->tipo_documento = $request->tipo_documento;
@@ -77,6 +79,7 @@ class PersonaController extends Controller
         $persona->estado_civil = $request->estado_civil;
         $persona->edad = $request->edad;
         $persona->profesion = $request->profesion;
+        $persona->celular = $request->celular;
         $persona->distrito_id = $request->distrito_id;
         $persona->direccion = $request->direccion;
         $persona->tipo_documento = $request->tipo_documento;

@@ -35,4 +35,17 @@ class Paciente extends Model
     	}
     	return $salida;
     }
+
+    static function getTipoPaciente(){
+        $salida = [
+            1 => 'ACTIVO LABORAL',
+            2 => 'JUBILADO COMPLACIENTE',
+            3 => 'NIÑO',
+            4 => 'CC',
+            5 => 'IP'
+
+        ];
+
+            return $salida;
+    }
 }

@@ -73,8 +73,14 @@
                                 <div class="col-4">
                                     <select name="cboEC" id="cboEC" class="form-control">
                                         <option value="">Elige</option>
-                                        <option></option>
-                                      
+                                        @foreach($estadosCiviles as $key => $estadoCivil)
+                                            <option value="{{$key}}" 
+                                                    {{
+                                                        $paciente->persona->estado_civil == $key?'selected':''
+                                                    }}
+                                                    >{{$estadoCivil}}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -110,12 +116,29 @@
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Provincia</label>
                                 <input type="hidden" id="id_pro" value="">
                                 <div class="col-2">
-                                    <select id="provincia" name="provincia_persona" class="form-control"></select>
+                                    <select id="provincia" name="provincia_persona" class="form-control">
+                                        <option value="{{$departamentos[0]->provincias[0]->id}}"
+                                            {{
+                                                $paciente->persona->distrito_id == $departamentos[0]->provincias[0]->distritos[0]->id?'selected':''
+                                            }}
+                                            >{{$departamentos[0]->provincias[0]->distritos[0]->nombre}}
+                                        </option>
+                                    </select>
                                 </div>
                                 <label for="" class="col-form-label text-right font-weight-bold col-2">Distrito</label>
-                                <input type="hidden" id="id_dis" value="">
+                                <!--<input type="hidden" id="id_dis" value="">-->
                                 <div class="col-2">
-                                    <select id="distrito" name="distrito_persona" class="form-control"></select>
+                                    <select id="distrito" name="distrito_persona" class="form-control">
+                                      
+                                        <option value="{{$paciente->persona->distrito_id}}"
+                                            {{
+                                                $paciente->persona->distrito_id == $departamentos[0]->provincias[0]->distritos[0]->id?'selected':''
+                                            }}
+                                            >{{$departamentos[0]->provincias[0]->distritos[0]->nombre}}
+                                        </option>
+                                    
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -156,11 +179,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="" class="col-form-label text-right font-weight-bold col-2">Tipo Cliente</label>
+                                <label for="" class="col-form-label text-right font-weight-bold col-2">Tipo Paciente</label>
                                 <div class="col-4">
-                                    <select name="cboTipoCliente" class="form-control" >
-                                        <option>- Elige -</option>
-                                        <option></option>
+                                    <select name="cboTipoPaciente" name="cboTipoPaciente" class="form-control" >
+                                        <option>Elige</option>
+                                        @foreach($tiposPacientes as $key => $tipoPaciente)
+                                            <option value="{{$key}}" 
+                                                {{
+                                                    $paciente->tipo_paciente == $key?'selected':''
+
+                                                }}
+                                            >{{$tipoPaciente}}
+                                        </option>
+                                        @endforeach
                                         
                                     </select>
                                 </div>

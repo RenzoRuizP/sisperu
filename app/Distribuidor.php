@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Distribuidor extends Model
 {
-    protected $table= 'Distribuidores';
+    protected $table= 'distribuidores';
 
     public function empresa(){
     	return $this->belongsTo(Empresa::class);

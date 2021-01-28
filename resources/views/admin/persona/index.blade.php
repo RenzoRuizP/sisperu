@@ -69,6 +69,9 @@
                                 data-tipo_documento ="{{$persona->tipo_documento}}"
                                 data-numero_documento ="{{$persona->numero_documento}}"
                                 data-sexo ="{{$persona->sexo}}"
+                                data-estado_civil ="{{$persona->estado_civil}}"
+                                data-edad ="{{$persona->edad}}"
+                                data-profesion ="{{$persona->profesion}}"
                                 >Editar</button>
                                 
                                 <button data-id="{{$persona->id}}" class="btn btn-danger btn-eliminar">Eliminar</button>

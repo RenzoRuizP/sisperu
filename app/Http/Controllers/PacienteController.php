@@ -15,10 +15,11 @@ class PacienteController extends Controller
      */
     public function index()
     {
+        $tiposPacientes = Paciente::getTipoPaciente();
         $personas = Persona::whereNull('deleted_at')->get();
         $js = ['paciente.js'];
         $pacientes = Paciente::whereNull('deleted_at')->get();
-        return view('admin.paciente.index', compact('js', 'pacientes', 'personas'));
+        return view('admin.paciente.index', compact('js', 'pacientes', 'personas', 'tiposPacientes'));
     }
 
     /**
@@ -40,6 +41,7 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $paciente = new Paciente();
+        $paciente->tipo_paciente = $request->tipo_paciente;
         $paciente->persona_id = $request->persona_id;
         $paciente->save();
 
@@ -77,6 +79,7 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente)
     {
+        $paciente->tipo_paciente = $request->tipo_paciente;
         $paciente->persona_id = $request->persona_id;
         $paciente->save();
 

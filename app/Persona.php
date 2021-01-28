@@ -21,7 +21,7 @@ class Persona extends Model
     }
 
     public function cliente(){
-		return $this->belongsTo(Cliente::class);
+		return $this->hasOne(Cliente::class);
 	}
 
 	public function paciente(){
@@ -41,7 +41,7 @@ class Persona extends Model
 		];
 		return $salida;
 	}
-/*
+
 	static function getEstadoCivil(){
 		$salida = [
 			1 => 'Soltero',
@@ -53,7 +53,7 @@ class Persona extends Model
 
 			return $salida;
 	}
-*/
+
 	static function existeDocumento(){
 		$tipoDocumento = $_GET['tdocumento'];
 		$numeroDocumento = $_GET['ndocumento'];

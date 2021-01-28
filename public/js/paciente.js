@@ -21,6 +21,7 @@ $(".btn-editar").on('click', function(){ // editar
 		_modal.find("#registrar_paciente").attr('action', _url_web_+'/mantenimiento/paciente/'+_id);
 		_modal.find("#registrar_paciente").append('<input type="hidden" name="_method" value="PUT">');
 
+		_modal.find('select[name="tipo_paciente"]').val(data.tipo_paciente);
 		_modal.find('select[name="persona_id"]').val(data.persona_id);
 		_modal.modal('show');
 	});
